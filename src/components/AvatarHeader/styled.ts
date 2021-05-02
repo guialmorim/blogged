@@ -3,8 +3,9 @@ import styled from 'styled-components';
 export const AvatarHeaderWrapper = styled.div`
 	display: flex;
 	max-width: 420px;
-	border: 2px solid red;
 	align-items: center;
+	margin-top: 2rem;
+	margin-bottom: 4rem;
 `;
 
 export const AvatarHeaderImage = styled.img`
@@ -15,6 +16,7 @@ export const AvatarHeaderImage = styled.img`
 export const AvatarHeaderText = styled.div`
 	margin-left: 10px;
 	font-family: 'Merriweather', serif;
+	text-transform: lowercase;
 
 	a {
 		color: ${({ theme }) => theme.accents.a1};
@@ -30,11 +32,6 @@ export const AvatarHeaderText = styled.div`
 		color: ${({ theme }) => theme.text.default};
 		margin: 0;
 		padding: 0;
-
 		font-size: ${({ theme }) => theme.fontSize.xs};
-
-		@media screen and (max-width: 500px) {
-			font-size: 3.2vw;
-		}
 	}
 `;

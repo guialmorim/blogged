@@ -1,3 +1,4 @@
+import { Badge } from 'reactstrap';
 import styled from 'styled-components';
 
 export const CardPost = styled.div`
@@ -13,11 +14,14 @@ export const CardPost = styled.div`
 	transition: all 0.3s;
 	display: flex;
 	align-items: center;
-
 	height: 400px;
 
 	@media screen and (max-width: 768px) {
-		height: calc(100vh - 16rem);
+		height: 520px;
+	}
+
+	@media screen and (max-width: 300px) {
+		height: 500px;
 	}
 `;
 
@@ -38,6 +42,10 @@ export const CardPostContentImage = styled.div`
 		width: 100%;
 		height: 300px;
 		transform: translateX(0) translateY(-30px);
+	}
+
+	@media screen and (max-width: 420px) {
+		height: 175px;
 	}
 
 	box-shadow: 4px 13px 30px 1px rgba(0, 0, 0, 0.2);
@@ -74,22 +82,45 @@ export const CardPostContentTextTitle = styled.div`
 	color: ${({ theme }) => theme.text.default};
 	margin-bottom: 20px;
 
-	font-size: ${({ theme }) => theme.fontSize.sm};
+	font-size: ${({ theme }) => theme.fontSize.md};
 
 	@media screen and (max-width: 500px) {
 		font-size: ${({ theme }) => theme.fontSize.xs};
 	}
 `;
 
-export const CardPostContentTextDescription = styled.div`
+export const CardPostContentTextDescription = styled.p`
 	color: ${({ theme }) => theme.text.accent};
 	margin-bottom: 15px;
 	line-height: 1.5em;
-
 	font-size: ${({ theme }) => theme.fontSize.xs};
 
 	@media screen and (max-width: 500px) {
 		font-size: ${({ theme }) => theme.fontSize.xxs};
+	}
+`;
+
+export const CardPostContentTags = styled.div`
+	display: flex;
+	align-items: center;
+`;
+
+export const CustomBadge = styled(Badge)`
+	background: ${({ theme }) => theme.bg.button};
+	color: ${({ theme }) => theme.text.reverse};
+	margin-right: 1rem;
+	@media screen and (max-width: 500px) {
+		margin-top: 1.5rem;
+	}
+`;
+
+export const CardPostContentFooterContent = styled.div`
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	@media screen and (max-width: 500px) {
+		flex-direction: column;
+		align-items: flex-start;
 	}
 `;
 

@@ -3,6 +3,8 @@ import { Link } from 'gatsby';
 import * as Styled from './styled';
 import { format } from 'date-fns';
 import { ptBR } from 'date-fns/locale';
+//@ts-ignore
+import { slugify } from 'utils/slugifyString';
 
 interface IProps {
 	node: {
@@ -10,10 +12,13 @@ interface IProps {
 		frontmatter: {
 			author: string;
 			date: string;
-			path: string;
 			title: string;
+			tags: string[];
 			image: string;
 			readTime: number;
+		};
+		fields: {
+			slug: string;
 		};
 		excerpt: string;
 	};
@@ -29,23 +34,36 @@ const Card: React.FC<IProps> = ({ node }) => {
 	return (
 		<Styled.CardPost>
 			<Styled.CardPostContent>
-				<Styled.CardPostContentImage>
-					<img src={`/static/${node.frontmatter.image}`} />
-				</Styled.CardPostContentImage>
+				<Link to={node.fields.slug}>
+					<Styled.CardPostContentImage>
+						<img src={`/static/${node.frontmatter.image}`} />
+					</Styled.CardPostContentImage>
+				</Link>
 
 				<Styled.CardPostContentText>
 					<Styled.CardPostContentTextDate>
 						{formattedDate} {' • '} {node.frontmatter.readTime} minutos
 					</Styled.CardPostContentTextDate>
 					<Styled.CardPostContentTextTitle>
-						{node.frontmatter.title}
+						<Link to={node.fields.slug}>{node.frontmatter.title}</Link>
 					</Styled.CardPostContentTextTitle>
 					<Styled.CardPostContentTextDescription>
-						{node.excerpt}
+						<Link to={node.fields.slug}>{node.excerpt}</Link>
 					</Styled.CardPostContentTextDescription>
-					<Styled.CardPostContentTextFooter>
-						<Link to={node.frontmatter.path}>READ MORE</Link>
-					</Styled.CardPostContentTextFooter>
+
+					<Styled.CardPostContentFooterContent>
+						<Styled.CardPostContentTextFooter>
+							<Link to={node.fields.slug}>Read More</Link>
+						</Styled.CardPostContentTextFooter>
+
+						<Styled.CardPostContentTags>
+							{node.frontmatter.tags.map((tag) => (
+								<Link key={tag} to={`/${slugify(tag)}`}>
+									<Styled.CustomBadge>{tag}</Styled.CustomBadge>
+								</Link>
+							))}
+						</Styled.CardPostContentTags>
+					</Styled.CardPostContentFooterContent>
 				</Styled.CardPostContentText>
 			</Styled.CardPostContent>
 		</Styled.CardPost>

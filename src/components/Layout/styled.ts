@@ -4,6 +4,13 @@ export const Wrapper = styled.div`
 	background-color: ${({ theme }) => theme.bg.defaultLight};
 `;
 
+export const BlogTitle = styled.h3`
+	color: ${({ theme }) => theme.accents.a1};
+	font-family: 'Montserrat', sans-serif;
+	font-weight: 900;
+	font-size: 2rem;
+`;
+
 interface OuterBorderProps {
 	open: boolean;
 }
@@ -39,20 +46,21 @@ export const Sidebar = styled.nav<SidebarProps>`
 `;
 
 export const OpenMenuButton = styled.a`
-	background: ${({ theme }) => theme.bg.button};
-	box-shadow: 4px 13px 30px 1px rgba(0, 0, 0, 0.2);
-	border-radius: 50px;
-	color: ${({ theme }) => theme.text.reverse};
-	padding: 5px 20px;
-	text-decoration: none;
-	border: none;
-	display: inline-flex;
-	justify-content: center;
-	letter-spacing: 1px;
 	cursor: pointer;
+	color: ${({ theme }) => theme.accents.a1};
+	transition: transform 0.5ms ease-in-out;
+
+	span {
+		text-decoration: underline;
+
+		&:hover {
+			text-decoration: none;
+		}
+	}
 
 	&:hover {
-		opacity: 0.6;
+		color: ${({ theme }) => theme.accents.a1};
+		transform: translateX(-7px);
 	}
 `;
 
@@ -79,7 +87,11 @@ export const DismissButton = styled.div`
 export const SidebarHeader = styled.div`
 	padding: 20px;
 	background: ${({ theme }) => theme.bg.default};
-	color: ${({ theme }) => theme.text.default};
+	h3 {
+		color: ${({ theme }) => theme.text.default};
+		font-family: 'Montserrat', sans-serif;
+		font-weight: 900;
+	}
 `;
 
 export const SidebarItems = styled.ul`
@@ -97,7 +109,7 @@ export const SidebarItems = styled.ul`
 	}
 
 	li a:hover {
-		color: #7386d5;
+		color: ${({ theme }) => theme.text.accent};
 		background: #fff;
 	}
 `;

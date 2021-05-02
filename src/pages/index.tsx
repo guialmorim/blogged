@@ -5,6 +5,7 @@ import Layout from 'components/Layout';
 import SEO from 'components/SEO';
 import PostCard from 'components/PostCard';
 import AvatarHeader from 'components/AvatarHeader';
+import Footer from 'components/Footer';
 
 interface IndexQueryPost {
 	allMarkdownRemark: {
@@ -17,8 +18,12 @@ interface IndexQueryPost {
 						date: string;
 						path: string;
 						title: string;
+						tags: string[];
 						image: string;
 						readTime: number;
+					};
+					fields: {
+						slug: string;
 					};
 					excerpt: string;
 				};
@@ -37,6 +42,7 @@ const IndexPage: React.FC<PageProps> = () => {
 			{data.allMarkdownRemark.edges.map((edge) => (
 				<PostCard key={edge.node.id} node={edge.node} />
 			))}
+			<Footer />
 		</Layout>
 	);
 };
@@ -50,10 +56,13 @@ const IndexQuery = graphql`
 					frontmatter {
 						author
 						date
-						path
-						title
-						image
 						readTime
+						title
+						tags
+						image
+					}
+					fields {
+						slug
 					}
 					excerpt
 				}

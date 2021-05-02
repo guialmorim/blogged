@@ -2,13 +2,15 @@ import React, { useState } from 'react';
 import { FaArrowLeft } from 'react-icons/fa';
 import { useStaticQuery, graphql, Link } from 'gatsby';
 import { ThemeProvider, DefaultTheme } from 'styled-components';
+import { HiOutlineArrowNarrowLeft } from 'react-icons/hi';
 
 import { darkTheme, lightTheme } from 'themes';
 import usePersistedState from 'hooks/usePersistedState';
 import StyledGlobalStyle from 'styles/StyledGlobalStyle';
 import Switcher from 'components/Switcher';
-import 'styles/index.scss';
 import * as Styled from './styled';
+
+import 'styles/index.scss';
 
 const Layout: React.FC = ({ children }) => {
 	const [open, setOpen] = useState(false);
@@ -72,13 +74,20 @@ const Layout: React.FC = ({ children }) => {
 				</Styled.OuterBorder>
 
 				<Styled.Content>
-					<div className="container d-flex justify-content-between my-3 border border-success">
-						<Styled.OpenMenuButton onClick={() => setOpen(!open)}>
-							Menu
-						</Styled.OpenMenuButton>
+					<div className="container d-flex justify-content-between align-items-center mt-3">
+						<Styled.BlogTitle>
+							<Link to="/">Blogged</Link>
+						</Styled.BlogTitle>
 						<Switcher checked={checked} handleChange={handleChange} />
 					</div>
-					<main className="container border border-primary">{children}</main>
+					<div className="container d-flex justify-content-between align-items-center">
+						<Styled.OpenMenuButton onClick={() => setOpen(!open)}>
+							<HiOutlineArrowNarrowLeft />
+							&nbsp;
+							<span>{`${open ? 'close' : 'open'} menu`}</span>
+						</Styled.OpenMenuButton>
+					</div>
+					<main className="container">{children}</main>
 				</Styled.Content>
 			</Styled.Wrapper>
 		</ThemeProvider>

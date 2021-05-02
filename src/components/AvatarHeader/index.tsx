@@ -8,11 +8,12 @@ const AvatarHeader: React.FC = () => {
 			<Styled.AvatarHeaderImage src="/static/avatar.png" />
 			<Styled.AvatarHeaderText>
 				<p>
-					Personal blog by{' '}
+					personal blog by{' '}
 					<a href="https://github.com/guialmorim" target="_blank">
-						Guilherme Almorim
+						guilherme almorim
 					</a>
-					. <br />I explain with words and code.
+					. <br />
+					learning code never felt so good.
 				</p>
 			</Styled.AvatarHeaderText>
 		</Styled.AvatarHeaderWrapper>
