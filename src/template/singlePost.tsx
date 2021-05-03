@@ -2,6 +2,11 @@ import React, { useEffect } from 'react';
 import { graphql, Link } from 'gatsby';
 import { format } from 'date-fns';
 import { ptBR } from 'date-fns/locale';
+import {
+	AiOutlineFacebook,
+	AiOutlineTwitter,
+	AiOutlineGoogle,
+} from 'react-icons/ai';
 
 import Layout from 'components/Layout';
 import SEO from 'components/SEO';
@@ -16,7 +21,7 @@ import javascript from 'highlight.js/lib/languages/javascript';
 import GetInTouch from 'components/GetInTouch';
 hljs.registerLanguage('javascript', javascript);
 
-const PostTemplate: React.FC = ({ data }: any) => {
+const PostTemplate: React.FC = ({ data, pageContext }: any) => {
 	const post = data.markdownRemark;
 
 	const formattedDate = format(
@@ -24,6 +29,8 @@ const PostTemplate: React.FC = ({ data }: any) => {
 		'MMMM dd, yyyy',
 		{ locale: ptBR }
 	);
+
+	const baseUrl = 'https://blogged-app.netlify.app';
 
 	useEffect(() => {
 		document.querySelectorAll('pre code').forEach((block) => {
