@@ -36,7 +36,7 @@ const Card: React.FC<IProps> = ({ node }) => {
 			<Styled.CardPostContent>
 				<Link to={node.fields.slug}>
 					<Styled.CardPostContentImage>
-						<img src={`/static/${node.frontmatter.image}`} />
+						<img src={`static/images/${node.frontmatter.image}`} />
 					</Styled.CardPostContentImage>
 				</Link>
 

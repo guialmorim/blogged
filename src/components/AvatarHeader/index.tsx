@@ -5,7 +5,7 @@ import * as Styled from './styled';
 const AvatarHeader: React.FC = () => {
 	return (
 		<Styled.AvatarHeaderWrapper>
-			<Styled.AvatarHeaderImage src="/static/avatar.png" />
+			<Styled.AvatarHeaderImage src="/static/images/avatar.png" />
 			<Styled.AvatarHeaderText>
 				<p>
 					personal blog by{' '}

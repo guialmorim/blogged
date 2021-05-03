@@ -14,13 +14,13 @@ const Switcher: React.FC<IProps> = ({ checked, handleChange }) => {
 		<Switch
 			checkedIcon={
 				<img
-					src="/icons/crescent-moon.png"
+					src="static/icons/crescent-moon.png"
 					style={{ marginLeft: '8px', marginTop: '2px' }}
 				/>
 			}
 			uncheckedIcon={
 				<img
-					src="/icons/sun.png"
+					src="static/icons/sun.png"
 					style={{ marginLeft: '6px', marginTop: '2px' }}
 				/>
 			}
