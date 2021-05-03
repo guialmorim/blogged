@@ -4,13 +4,15 @@ type Response<T> = [T, Dispatch<SetStateAction<T>>];
 
 function usePersistedState<T>(key: string, initialState: T): Response<T> {
 	const [state, set] = React.useState(() => {
-		const storageValue = localStorage.getItem(key);
-
-		if (storageValue) {
-			return JSON.parse(storageValue);
-		} else {
+		const ISSERVER = typeof window === 'undefined';
+		if (!ISSERVER) {
+			const storageValue = localStorage.getItem(key);
+			if (storageValue) {
+				return JSON.parse(storageValue);
+			}
 			return initialState;
 		}
+		return initialState;
 	});
 
 	React.useEffect(() => {
